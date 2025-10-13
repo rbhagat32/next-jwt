@@ -1,0 +1,9 @@
+node_modules
+.dockerignore
+Dockerfile.dev
+compose.yaml
+.git
+.gitignore
+eslint.config.mjs
+prettier.config.js
+README.md

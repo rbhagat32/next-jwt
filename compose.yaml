@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_USER: raghav
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: oi
+      POSTGRES_DB: jwt-auth
     volumes:
       - postgres-data:/var/lib/postgresql/data
 

@@ -1,17 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient({
-  log: ["query", "info", "warn", "error"],
-});
+const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
-prisma
-  .$connect()
-  .then(() => {
-    console.log("Connected to PostgreSQL !");
-  })
-  .catch((e: Error) => {
-    console.error("Error connecting to PostgreSQL: ", e);
-    process.exit(1);
+export const prisma =
+  globalForPrisma.prisma ||
+  new PrismaClient({
+    log: ["query", "info", "warn", "error"],
   });
 
-export { prisma };
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;

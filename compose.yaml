@@ -42,7 +42,7 @@ services:
     container_name: prisma-studio
     working_dir: /app
     ports:
-      - "5555:5555"
+      - "51212:51212"
     volumes:
       - ./:/app
     command: sh -c "npx prisma studio"

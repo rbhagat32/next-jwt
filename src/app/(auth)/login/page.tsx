@@ -13,10 +13,7 @@ import { toast } from "sonner";
 
 export default function LoginForm() {
   const initialState: FormState = { errors: {}, prevFormData: {} };
-  const [state, formAction, isPending] = useActionState(
-    loginAction,
-    initialState
-  );
+  const [state, formAction, isPending] = useActionState(loginAction, initialState);
 
   useEffect(() => {
     if (state.errors.username) {
@@ -51,10 +48,7 @@ export default function LoginForm() {
               <div className="grid gap-3">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
-                  <Link
-                    href="/"
-                    className="ml-auto text-sm underline-offset-2 hover:underline"
-                  >
+                  <Link href="/" className="ml-auto text-sm underline-offset-2 hover:underline">
                     Forgot your password?
                   </Link>
                 </div>
@@ -124,8 +118,7 @@ export default function LoginForm() {
         </CardContent>
       </Card>
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our Terms of Service and Privacy
-        Policy.
+        By clicking continue, you agree to our Terms of Service and Privacy Policy.
       </div>
     </div>
   );

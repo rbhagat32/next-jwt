@@ -7,7 +7,7 @@ RUN npm ci
 COPY prisma ./prisma/
 RUN npx prisma generate
 
-COPY ./ ./
+COPY . .
 
 EXPOSE 3000
 CMD npx prisma migrate deploy && npm run dev

@@ -1,7 +1,7 @@
 "use client";
 
-import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 import { toast } from "sonner";
 
 export function LogoutButton() {

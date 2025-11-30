@@ -13,10 +13,7 @@ import { toast } from "sonner";
 
 export default function SignUpForm() {
   const initialState: FormState = { errors: {}, prevFormData: {} };
-  const [state, formAction, isPending] = useActionState(
-    signupAction,
-    initialState
-  );
+  const [state, formAction, isPending] = useActionState(signupAction, initialState);
 
   useEffect(() => {
     if (state.errors.username) {
@@ -128,8 +125,7 @@ export default function SignUpForm() {
         </CardContent>
       </Card>
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our Terms of Service and Privacy
-        Policy.
+        By clicking continue, you agree to our Terms of Service and Privacy Policy.
       </div>
     </div>
   );

@@ -3,18 +3,15 @@
 import { prisma } from "@/lib/prisma";
 import { createSession } from "@/lib/session";
 import { loginSchema, type LoginSchema } from "@/schema/login";
-import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
+import { redirect } from "next/navigation";
 
 export type FormState = {
   errors: Partial<Record<keyof LoginSchema, string>>;
   prevFormData?: { username?: string; password?: string };
 };
 
-const loginAction = async (
-  _prevState: FormState,
-  formData: FormData
-): Promise<FormState> => {
+const loginAction = async (_prevState: FormState, formData: FormData): Promise<FormState> => {
   const data = {
     username: formData.get("username") as string,
     password: formData.get("password") as string,

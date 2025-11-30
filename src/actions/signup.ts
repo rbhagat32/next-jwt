@@ -3,8 +3,8 @@
 import { prisma } from "@/lib/prisma";
 import { createSession } from "@/lib/session";
 import { signupSchema, type SignupSchema } from "@/schema/signup";
-import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
+import { redirect } from "next/navigation";
 
 export type FormState = {
   errors: Partial<Record<keyof SignupSchema, string>>;
@@ -15,10 +15,7 @@ export type FormState = {
   };
 };
 
-const signupAction = async (
-  _prevState: FormState,
-  formData: FormData
-): Promise<FormState> => {
+const signupAction = async (_prevState: FormState, formData: FormData): Promise<FormState> => {
   const data = {
     username: formData.get("username") as string,
     email: formData.get("email") as string,
@@ -44,10 +41,8 @@ const signupAction = async (
 
   if (existingUser) {
     const errors: FormState["errors"] = {};
-    if (existingUser.username === data.username)
-      errors.username = "Username already taken !";
-    if (existingUser.email === data.email)
-      errors.email = "Email already registered !";
+    if (existingUser.username === data.username) errors.username = "Username already taken !";
+    if (existingUser.email === data.email) errors.email = "Email already registered !";
     return { errors, prevFormData: data };
   }
 
